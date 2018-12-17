@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My WebSite</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>MyWebSite</h1>
+        <div class="search">
+            <form action="" method="post">
+                <input type="text" placeholder="Type ISBN number, title or author of book">
+            </form>
+        </div>
+        <nav>
+            <a href="#">Log in</a> |
+            <a href="{{ '/signup' }}">Sign up</a>
+        </nav>
+    </header>
+
+    {% block main %}
+    {% endblock %}
+
+    <footer>
+
+    </footer>
+</body>
+</html>

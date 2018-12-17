@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+* {
+    font-family: 'Open Sans Condensed', 'Open Sans', sans-serif;
+    font-size: 20px;
+    margin: 0 0 0 0;
+}
+
+header {
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px 30px 20px;
+}
+
+header h1 {
+    color: white;
+    font-size: 50px;
+}
+
+header .search {
+    margin-top: 20px;
+}
+
+header .search form input {
+    width: 700px;
+}
+
+header nav {
+    margin-top: 20px;
+    color: white;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+}
+
+header nav a:hover {
+    border-bottom: 2px solid #ff8000;
+}
+
+#index {
+    height: 1000px;
+    background-color: #80e5ff;
+    padding: 160px 0 0 200px;
+}
+
+#index .container {
+    height: 800px;
+    width: 1400px;
+    background-color: #fff;
+}
+
+#index .container h1 {
+    text-align: center;
+    font-size: 50px;
+    padding-top: 50px;
+    padding-bottom: 30px;
+}
+
+#index .container p {
+    font-size: 30px;
+    text-align: center;
+}
+
+#signup {
+    height: 1000px;
+    background-color: #ffff80;
+    padding: 160px 0 0 200px;
+}
+
+#signup .container {
+    height: 800px;
+    width: 1400px;
+    background-color: #fff;
+}
+
+footer {
+    background-color: black;
+    height: 150px;
+}
