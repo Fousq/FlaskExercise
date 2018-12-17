@@ -14,7 +14,8 @@ header {
     padding: 20px 50px 30px 20px;
 }
 
-header h1 {
+header h1 a {
+    text-decoration: none;
     color: white;
     font-size: 50px;
 }
@@ -25,6 +26,12 @@ header .search {
 
 header .search form input {
     width: 700px;
+}
+
+header .search form button {
+    border: none;
+    background-color: #fff;
+    height: 33px;
 }
 
 header nav {
@@ -41,16 +48,43 @@ header nav a:hover {
     border-bottom: 2px solid #ff8000;
 }
 
-#index {
+main {
     height: 1000px;
-    background-color: #80e5ff;
     padding: 160px 0 0 200px;
 }
 
-#index .container {
+#index {
+    background-color: #80e5ff;
+}
+
+main .container {
     height: 800px;
     width: 1400px;
     background-color: #fff;
+}
+
+main .container form {
+    padding: 200px 0 0 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+main .container form .name {
+    margin-bottom: 50px;
+}
+
+main .container form .password {
+    margin-bottom: 50px;
+}
+
+main .container form button {
+    width: 100px;
+    height: 40px;
+    align-self: center;
+    border: none;
+    background-color: black;
+    color: white;
 }
 
 #index .container h1 {
@@ -66,18 +100,47 @@ header nav a:hover {
 }
 
 #signup {
-    height: 1000px;
     background-color: #ffff80;
-    padding: 160px 0 0 200px;
 }
 
 #signup .container {
-    height: 800px;
-    width: 1400px;
-    background-color: #fff;
+    text-align: center;
+}
+
+#login {
+    background-color: #ff4d4d;
+}
+
+#login .container {
+    text-align: center;
 }
 
 footer {
     background-color: black;
     height: 150px;
+}
+
+@media only screen and (max-width: 1700px) {
+    main .container {
+        width: 85%;
+    }
+
+}
+
+@media only screen and (max-width: 1450px) {
+    main {
+        padding-left: 13%;
+    }
+
+    header .search form input {
+        width: 500px;
+    }
+
+}
+
+@media only screen and (max-width: 940px) {
+    header .search form input {
+        width: 300px;
+    }
+    
 }

@@ -6,14 +6,15 @@
 </head>
 <body>
     <header>
-        <h1>MyWebSite</h1>
+        <h1><a href="{{ '/' }}">MyWebSite</a></h1>
         <div class="search">
             <form action="" method="post">
                 <input type="text" placeholder="Type ISBN number, title or author of book">
+                <button>Search</button>
             </form>
         </div>
         <nav>
-            <a href="#">Log in</a> |
+            <a href="{{ '/login' }}">Log in</a> |
             <a href="{{ '/signup' }}">Sign up</a>
         </nav>
     </header>
