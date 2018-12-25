@@ -3,7 +3,7 @@
 {% block main %}
 <main id="login">
     <div class="container">
-        <form action="" method="get">
+        <form action="{{ url_for('login') }}" method="post">
             <div class="name">
                 Name: <input name="name" type="text" required>
             </div>

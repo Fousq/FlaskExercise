@@ -1,5 +1,14 @@
 {% extends "layout.html" %}
 
+{% block nav_content %}
+    {% if logged_in %}
+        <a href="#">{{ name }}</a> |
+        <a href="{{ url_for('logout') }}">Log out</a>
+    {% else %}
+        {{ super() }}
+    {% endif %}
+{% endblock %}
+
 {% block main %}
 <main id="index">
     <div class="container">

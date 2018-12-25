@@ -61,6 +61,7 @@ main .container {
     height: 800px;
     width: 1400px;
     background-color: #fff;
+    text-align: center;
 }
 
 main .container form {
@@ -103,16 +104,22 @@ main .container form button {
     background-color: #ffff80;
 }
 
-#signup .container {
-    text-align: center;
-}
-
 #login {
     background-color: #ff4d4d;
 }
 
-#login .container {
-    text-align: center;
+#error {
+    background-color: #bb8fce;
+}
+
+#error .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#error .container p {
+    font-size: 60px;
 }
 
 footer {
