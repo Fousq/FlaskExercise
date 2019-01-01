@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<main id="search">
+    <div class="container">
+        {% for book in books %}
+            <div class="book">
+                <form action="" method="get">
+                    <p>Title: {{ book.title }}</p>
+                    <p>Author: {{ book.author }}</p>
+                    <p>Year: {{ book.year }}</p>
+                    <p>World ratings count: {{ book.ratings_count }}</p>
+                    <p>Average rating: {{ book.average_rating }}</p>
+                    <button>See comments</button>
+                </form>
+            </div>
+        {% else %}
+            <h1>NO SUCH BOOK</h1>
+        {% endfor %}
+    </div>
+</main>
+{% endblock %}

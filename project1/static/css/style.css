@@ -112,6 +112,12 @@ main .container form button {
     background-color: #bb8fce;
 }
 
+#search {
+    background-color: #82e0aa;
+    height: 100%;
+    padding-bottom: 200px;
+}
+
 #error .container {
     display: flex;
     flex-direction: column;
@@ -120,6 +126,31 @@ main .container form button {
 
 #error .container p {
     font-size: 60px;
+}
+
+#search .container {
+    height: 100%;
+    padding: 20px 20px 20px 20px;
+}
+
+#search .container .book {
+    height: 100%;
+    border: 1px solid black;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+#search .container .book form {
+    padding: 0 0 0 0;
+}
+
+#search .container .book button {
+    border: none;
+    background-color: black;
+    color: white;
+    width: 150px;
+    margin-bottom: 5px;
 }
 
 footer {

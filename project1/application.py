@@ -1,5 +1,6 @@
 import os
 
+import requests
 from flask import ( 
     Flask, session, render_template, url_for, request,
     redirect
@@ -29,14 +30,15 @@ user_logged_in = False
 user_name = None
 error_content = None
 
+key = "9SONAGWBR4c8TJbP6M9g"
+
 @app.route("/")
 def index():
-    print(user_logged_in)
     return render_template('index.html', logged_in=user_logged_in, name=user_name)
 
 @app.route("/signup")
 def render_signup():
-    return render_template('signup.html')
+    return render_template('signup.html', logged_in=user_logged_in)
 
 @app.route("/signup", methods=['POST'])
 def signup():
@@ -58,7 +60,7 @@ def signup():
 
 @app.route("/login")
 def render_login():
-    return render_template('login.html')
+    return render_template('login.html', logged_in=user_logged_in)
 
 @app.route("/login", methods=['POST'])
 def login():
@@ -74,9 +76,27 @@ def login():
     user_name = name
     return redirect(url_for('.index'))
 
-@app.route("/search", methods=['GET'])
+@app.route("/search", methods=['POST'])
 def search():
-    return "SEARCH"
+    bookInfo = '%' + request.form['bookInfo'] + '%'
+    resultSet = db.execute("SELECT * FROM books" 
+    " WHERE isbn LIKE :bookInfo OR title LIKE :bookInfo" 
+    " OR author LIKE :bookInfo", {"bookInfo" : bookInfo}).fetchall()
+    books = list()
+    for book in resultSet:
+        result = requests.get("https://www.goodreads.com/book/review_counts.json"
+        , params={"key" : key, "isbns" : book['isbn']})
+        print(result.json()['books'][0]['average_rating'])
+        books.append({
+            'id' : book['id'],
+            'isbn' : book['isbn'],
+            'title' : book['title'],
+            'author' : book['author'],
+            'year' : book['year'],
+            'ratings_count' : result.json()['books'][0]['work_ratings_count'],
+            'average_rating' : result.json()['books'][0]['average_rating']
+        })
+    return render_template("search.html", logged_in=user_logged_in, books=books)
 
 @app.route("/error")
 def error():

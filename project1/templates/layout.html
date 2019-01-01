@@ -8,16 +8,19 @@
     <header>
         <h1><a href="{{ '/' }}">MyWebSite</a></h1>
         <div class="search">
-            <form action="{{ url_for('search') }}" method="get">
+            <form action="{{ url_for('search') }}" method="post">
                 <input name ="bookInfo" type="text" placeholder="Type ISBN number, title or author of book">
-                <button type="submit">Search</button>
+                <button>Search</button>
             </form>
         </div>
         <nav>
-            {% block nav_content %}
-            <a href="{{ '/login' }}">Log in</a> |
-            <a href="{{ '/signup' }}">Sign up</a>
-            {% endblock %}
+            {% if logged_in %}
+                <a href="#">{{ name }}</a> |
+                <a href="{{ url_for('logout') }}">Log out</a>
+            {% else %}
+                <a href="{{ '/login' }}">Log in</a> |
+                <a href="{{ '/signup' }}">Sign up</a>
+            {% endif %}
         </nav>
     </header>
 
