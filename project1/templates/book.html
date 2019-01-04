@@ -15,31 +15,36 @@
             {% for comment in comments %}
                 <div class="comment">
                     <p>{{ comment.comment }}</p>
-                </div>
-                <div class="rating">
-                    {{ comment.rating }}
+                    <div class="rating">
+                        Rating: {{ comment.rating }}
+                    </div>
                 </div>
             {% else %}
                 <p>No comments</p>
             {% endfor %}
         </div>
-        {% if available_to_comment %}
-            <form action="{{ url_for('book'), book_id=book.id }}" method="post">
-                Text: <textarea name="comment" cols="30" rows="10" required>
-                </textarea>
-                <select name="rating" required>
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-                <button>Comment</button>
-            </form>
-        {% else %}
-            <p>You cannot comment this book, unless you are logged in</p>
-        {% endif %}
+        <div class="comment_form">
+            {% if available_to_comment %}
+                <form action="{{ url_for('comment', book_id=book.id) }}" method="post">
+                    <textarea name="comment" placeholder="Your comment" required></textarea>
+                    <div class="p2">
+                        <div class="rating">
+                            Your rate: <select name="rating" required>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                        <button>Comment</button>
+                    </div>
+                </form>
+            {% else %}
+                <p>You cannot comment this book, unless you are logged in or commented before</p>
+            {% endif %}
+        </div>
     </div>
 </main>
 {% endblock %}

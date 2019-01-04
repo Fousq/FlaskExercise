@@ -31,7 +31,8 @@ header .search form input {
 header .search form button {
     border: none;
     background-color: #fff;
-    height: 33px;
+    height: 40px;
+    border-radius: 8px;
 }
 
 header nav {
@@ -124,6 +125,10 @@ main .container form button {
     padding-bottom: 200px;
 }
 
+#success {
+    background-color: #ffb3ff;
+}
+
 #error .container {
     display: flex;
     flex-direction: column;
@@ -170,8 +175,74 @@ main .container form button {
     height: 100%;
     padding: 20px 20px 20px 20px;
     display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#book .container .header {
+    border: 1px solid black;
+    padding: 10px 0 10px 0;
+}
+
+#book .container .comments {
+    margin: 5px 0 10px 0;
+    padding: 10px 2px 5px 2px;
+    border: 1px solid black;
+}
+
+#book .container .comments .comment {
+    margin-bottom: 5px;
+    display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    border: 1px solid black;
+}
+
+#book .container .comments .comment p {
+    width: 92%;
+    text-align: start;
+    margin-left: 3px;
+    margin-right: 5px;
+    border-right: 1px solid black;
+    word-wrap: break-word;
+}
+
+#book .container .comment_form {
+    padding: 10px 0 10px 0;
+    border: 1px solid black;
+}
+
+#book .container .comment_form form {
+    padding: 0 0 0 0;
+    display: flex;
+    flex-direction: row;
+}
+
+#book .container .comment_form form textarea {
+    overflow: auto;
+    resize: none;
+    margin-left: 20px;
+    width: 90%;
+    height: 300px;
+}
+
+#book .container .comment_form form .p2 {
+    flex-direction: column;
+}
+
+#book .container .comment_form form button {
+    margin-top: 192px;
+}
+
+#success .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#success .container p {
+    font-size: 60px;
 }
 
 footer {

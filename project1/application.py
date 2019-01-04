@@ -29,7 +29,6 @@ resultSet = None
 user_logged_in = False
 user_name = None
 error_content = None
-user_index = -1
 
 key = "9SONAGWBR4c8TJbP6M9g"
 
@@ -96,10 +95,12 @@ def search():
             'ratings_count' : result.json()['books'][0]['work_ratings_count'],
             'average_rating' : result.json()['books'][0]['average_rating']
         })
-    return render_template("search.html", logged_in=user_logged_in, books=books)
+    return render_template("search.html", logged_in=user_logged_in, 
+    name=user_name ,books=books)
 
 @app.route("/search/<int:book_id>")
 def open_book(book_id: int):
+    user_index = -1
     resultSet = db.execute("SELECT * FROM books WHERE id=:id",
     { "id" : book_id })
     book = resultSet.fetchone()
@@ -123,27 +124,29 @@ def open_book(book_id: int):
     if user_logged_in:
         resultSet = db.execute("SELECT id FROM users WHERE name=:name",
         {"name" : user_name})
-        user_index = resultSet.fetchone()
+        user_index = resultSet.fetchone()['id']
     user_available_to_comment = is_user_available_to_comment(book['id'], user_index)
     return render_template("book.html", book=book, comments=comments,
-     available_to_comment=user_available_to_comment)
+     available_to_comment=user_available_to_comment, logged_in=user_logged_in,
+     name=user_name)
 
-@app.route("/search/<int:book_id>", method=['POST'])
-def book(book_id):
+@app.route("/search/<int:book_id>", methods=['POST'])
+def comment(book_id):
     comment = request.form['comment']
     rating = request.form['rating']
     resultSet = db.execute("SELECT id from users WHERE name=:name",
     {"name" : user_name})
-    user_index = resultSet.fetchone()
+    user_index = resultSet.fetchone()['id']
     db.execute("INSERT INTO comments(comment, rating, book_id, user_id) "
-    "VALUSE (:comment, :rating, :book_id, :user_id)",
+    "VALUES (:comment, :rating, :book_id, :user_id)",
     {"comment" : comment, "rating" : rating, "book_id" : book_id, "user_id" : user_index})
     db.commit()
-    return render_template("success.html")
+    return render_template("success.html", logged_in=user_logged_in, name=user_name)
 
 @app.route("/error")
 def error():
-    return render_template('error.html', content=error_content)
+    return render_template('error.html', content=error_content, 
+    logged_in=user_logged_in, name=user_name)
 
 @app.route("/logout")
 def logout():
