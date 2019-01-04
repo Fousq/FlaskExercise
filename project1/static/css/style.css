@@ -118,6 +118,12 @@ main .container form button {
     padding-bottom: 200px;
 }
 
+#book {
+    background-color: #ffff66;
+    height: 100%;
+    padding-bottom: 200px;
+}
+
 #error .container {
     display: flex;
     flex-direction: column;
@@ -138,19 +144,34 @@ main .container form button {
     border: 1px solid black;
     margin-bottom: 10px;
     display: flex;
-    justify-content: flex-start;
+    flex-direction: column;
 }
 
-#search .container .book form {
-    padding: 0 0 0 0;
+#search .container .book p {
+    align-self: flex-start;
+    padding-left: 10px;
+}
+
+#search .container .book a {
+    align-self: flex-end;
 }
 
 #search .container .book button {
+    height: 40px;
     border: none;
     background-color: black;
     color: white;
     width: 150px;
     margin-bottom: 5px;
+    margin-right: 10px;
+}
+
+#book .container {
+    height: 100%;
+    padding: 20px 20px 20px 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 footer {

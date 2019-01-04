@@ -5,14 +5,12 @@
     <div class="container">
         {% for book in books %}
             <div class="book">
-                <form action="" method="get">
-                    <p>Title: {{ book.title }}</p>
-                    <p>Author: {{ book.author }}</p>
-                    <p>Year: {{ book.year }}</p>
-                    <p>World ratings count: {{ book.ratings_count }}</p>
-                    <p>Average rating: {{ book.average_rating }}</p>
-                    <button>See comments</button>
-                </form>
+                <p>Title: {{ book.title }}</p>
+                <p>Author: {{ book.author }}</p>
+                <p>Year: {{ book.year }}</p>
+                <p>World ratings count: {{ book.ratings_count }}</p>
+                <p>Average rating: {{ book.average_rating }}</p>
+                <a href="{{ url_for('open_book', book_id = book.id) }}"> <button>See comments</button> </a>
             </div>
         {% else %}
             <h1>NO SUCH BOOK</h1>
